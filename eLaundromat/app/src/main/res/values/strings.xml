@@ -10,11 +10,22 @@
     <string name="title_activity_laundry_details">LaundryDetailsActivity</string>
     <string name="title_activity_about_us">AboutUsActivity</string>
     <string name="title_activity_profile_info">ProfileInfo</string>
-    <string name="about_us">We offer 24x7 Laundry Service. We pick-up the laundry from your address and also drop-off after laundry is completed.
-     Our main motto is customization. We offer all kinds of wash available in the laundromat. All you have to do is select your preference.</string>
+    <string name="about_us">We offer 24x7 Laundry Service.\n We pick-up the laundry from your address and also drop-off after laundry is completed.
+     \n Our main motto is customization. We offer all kinds of wash available in the laundromat. All you have to do is select your preference.</string>
     <string name="about_us_contact_number">+1-917-288-8031</string>
     <string name="about_us_contact_email">elaundromat@gmail.com</string>
     <string name="title_activity_laundry_details_acitvity2">LaundryDetailsAcitvity2</string>
     <string name="title_activity_review">ReviewActivity</string>
+    <string name="dry_cost_info">8 mins for 25 cents</string>
+    <string name="number_of_clothes">number_of_clothes</string>
+    <string name="wash_type">wash_type</string>
+    <string name="wash_selector">wash_selector</string>
+    <string name="dryer_type">dryer_type</string>
+    <string name="spcl_inst">spcl_inst</string>
+    <string name="washer_cost">washer_cost</string>
+    <string name="dryer_cost">dryer_cost</string>
+    <string name="total_cost">total_cost</string>
+    <string name="title_activity_login">Login</string>
+
 
 </resources>

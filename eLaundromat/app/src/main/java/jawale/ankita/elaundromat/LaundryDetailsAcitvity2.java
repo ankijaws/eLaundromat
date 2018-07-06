@@ -12,21 +12,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-public class LaundryDetailsAcitvity2 extends MainActivity implements View.OnClickListener{
+public class LaundryDetailsAcitvity2 extends MainActivity implements View.OnClickListener {
 
 //, RadioButton.OnCheckedChangeListener {
 
     private RadioGroup dryerRG, dryerTypeRG;
-    private EditText specialInstruction;
+    private EditText specialInstruction, timeET;
     private Button continue_btn;
     private LinearLayout dryerOptionLayout;
     private RadioButton yesRB, noRB;
     private RadioButton permanentPressRB, whiteClothesDryerRB, delicateDryRB;
+    private ImageView imgView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +47,8 @@ public class LaundryDetailsAcitvity2 extends MainActivity implements View.OnClic
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(LaundryDetailsAcitvity2.this, ProfileInfo.class);
+                startActivity(intent);
             }
         });
 
@@ -65,7 +67,10 @@ public class LaundryDetailsAcitvity2 extends MainActivity implements View.OnClic
         delicateDryRB = (RadioButton) rootView.findViewById(R.id.delicateDryer);
         specialInstruction = (EditText) rootView.findViewById(R.id.specialNote);
         continue_btn = (Button) rootView.findViewById(R.id.btn_continue);
+        imgView = (ImageView) rootView.findViewById(R.id.info);
+        imgView.setOnClickListener(this);
         continue_btn.setOnClickListener(this);
+        timeET = (EditText) rootView.findViewById(R.id.timeET);
         /*dryerRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -103,12 +108,21 @@ public class LaundryDetailsAcitvity2 extends MainActivity implements View.OnClic
         } else {
             GlobalClass.dryerSelected = false;
         }*/
-        setDryerOption(dryerTypeRG.getCheckedRadioButtonId());
-        GlobalClass.specialInstruction = specialInstruction.getText().toString().trim();
-        Toast.makeText(LaundryDetailsAcitvity2.this,GlobalClass.dryerType,Toast.LENGTH_SHORT).show();
+        if (v.getId() == R.id.btn_continue) {
+            if (timeET.getText().toString().trim().isEmpty()){
+                Toast.makeText(LaundryDetailsAcitvity2.this, "Enter the time for dryer", Toast.LENGTH_SHORT).show();
+            }else {
+                setDryerOption(dryerTypeRG.getCheckedRadioButtonId());
+                GlobalClass.specialInstruction = specialInstruction.getText().toString().trim();
+                GlobalClass.dryerTime = timeET.getText().toString().trim();
 
-        Intent intent = new Intent(LaundryDetailsAcitvity2.this, ReviewActivity.class);
-        startActivity(intent);
+                Intent intent = new Intent(LaundryDetailsAcitvity2.this, ReviewActivity.class);
+                startActivity(intent);
+            }
+        }else if(v.getId() == R.id.info){
+            Toast.makeText(LaundryDetailsAcitvity2.this, LaundryDetailsAcitvity2.this.getResources().getString(R.string.dry_cost_info), Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     private void setDryerOption(int dryerTypeRadioBtnId) {
