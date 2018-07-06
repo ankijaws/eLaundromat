@@ -7,9 +7,130 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".LaundryDetailsActivity"
     tools:showIn="@layout/activity_laundry_details"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    android:padding="@dimen/padding_20">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Number of Clothes"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_size"
+        android:textStyle="bold"
+        android:layout_weight="1"/>
+    <EditText
+        android:id="@+id/numOfClothes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size"
+        android:background="@drawable/spinner_background"
+        android:layout_weight="1"
+        android:layout_marginLeft="@dimen/margin_10"
+        />
+
+</LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size"
+        android:textStyle="bold"
+        android:text="Wash Type"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="@dimen/margin_10"/>
+
+        <RadioGroup
+            android:id="@+id/wash_type_radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10">
+
+            <RadioButton
+                android:id="@+id/white_wash"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:text="White Wash"
+                android:textSize="@dimen/text_size"
+                />
+
+            <RadioButton
+                android:id="@+id/color_wash"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:text="Color Wash"
+                android:textSize="@dimen/text_size"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/delicate_wash"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:text="Delicate Wash"
+                android:textSize="@dimen/text_size"/>
+
+        </RadioGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size"
+        android:textStyle="bold"
+        android:text="Wash Selector"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="@dimen/margin_10"/>
+
+    <RadioGroup
+        android:id="@+id/washSelectorRG"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10">
+
+        <RadioButton
+            android:id="@+id/quickWash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:text="Quick Wash"
+            android:textSize="@dimen/text_size"
+            android:checked="true"
+            />
+
+        <RadioButton
+            android:id="@+id/normalWash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:text="Normal Wash"
+            android:textSize="@dimen/text_size"
+            />
+
+        <RadioButton
+            android:id="@+id/heavyWash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:text="Heavy Wash"
+            android:textSize="@dimen/text_size"/>
+
+    </RadioGroup>
 
 
-
+    <Button
+        android:id="@+id/btn_continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continue"
+        android:textSize="@dimen/text_size"
+        android:background="@drawable/button_background"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_10"/>
 
 </LinearLayout>

@@ -13,9 +13,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    protected DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +39,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -42,6 +47,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -83,17 +89,26 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
+            Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_history) {
-
+            //Intent intent = new Intent(this,HistoryActivity.class);
+            //startActivity(intent);
         } else if (id == R.id.nav_disclaimer) {
-
+            //Intent intent = new Intent(this,DisclaimerActivity.class);
+            //startActivity(intent);
         } else if (id == R.id.nav_about_us) {
-
+            Intent intent = new Intent(this,AboutUsActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_feedback) {
-
+            //Intent intent = new Intent(this,FeedbackActivity.class);
+            //startActivity(intent);
         } else if (id == R.id.nav_share) {
-
+            Intent intent=new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_SUBJECT,"Share eLaundromat");
+            intent.putExtra(Intent.EXTRA_TEXT,"Join eLaundromat & save your time");
+            startActivity(Intent.createChooser(intent,"eLaundromat Service"));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

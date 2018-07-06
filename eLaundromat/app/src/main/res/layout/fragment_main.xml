@@ -5,19 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivityFragment"
-    android:orientation="vertical">
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center"
+    android:id="@+id/linearLayout">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
     
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:text="Select Location"
-        android:layout_weight="1"/>
+        android:textSize="@dimen/text_size"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"/>
 
     <Spinner
         android:id="@+id/location_spinner"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:prompt="@string/location_spinner"
-        android:layout_weight="1"/>
+        android:background="@drawable/spinner_background"
+        />
+
+    <Button
+        android:id="@+id/btn_continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continue"
+        android:background="@drawable/button_background"
+        android:layout_margin="@dimen/padding_20"/>
 
 </LinearLayout>
