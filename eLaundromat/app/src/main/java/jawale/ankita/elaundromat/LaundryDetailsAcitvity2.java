@@ -109,14 +109,21 @@ public class LaundryDetailsAcitvity2 extends MainActivity implements View.OnClic
             GlobalClass.dryerSelected = false;
         }*/
         if (v.getId() == R.id.btn_continue) {
-            if (timeET.getText().toString().trim().isEmpty()){
+            String timeTxt = timeET.getText().toString().trim();
+            double timeInt = Double.parseDouble(timeTxt);
+
+            if (timeTxt.isEmpty()){
                 Toast.makeText(LaundryDetailsAcitvity2.this, "Enter the time for dryer", Toast.LENGTH_SHORT).show();
-            }else {
+            }else if(timeInt % 8 != 0){
+                Toast.makeText(LaundryDetailsAcitvity2.this, "Time should be in multiple of 8. As Dryer costs 25cents for 8 mins and accepts 25 cents coins only", Toast.LENGTH_SHORT).show();
+            }
+            else {
                 setDryerOption(dryerTypeRG.getCheckedRadioButtonId());
                 GlobalClass.specialInstruction = specialInstruction.getText().toString().trim();
                 GlobalClass.dryerTime = timeET.getText().toString().trim();
 
                 Intent intent = new Intent(LaundryDetailsAcitvity2.this, ReviewActivity.class);
+                intent.putExtra("class","");
                 startActivity(intent);
             }
         }else if(v.getId() == R.id.info){

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Login"
+    tools:showIn="@layout/activity_login"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    android:padding="@dimen/padding_20"
+    android:layout_gravity="center">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_xl"
+        android:textStyle="bold"
+        android:text="Login"
+        android:textColor="@android:color/black"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_size"
+        android:hint="Enter Email ID"
+        android:layout_marginTop="@dimen/margin_10"
+        android:background="@drawable/spinner_background"
+        android:paddingLeft="@dimen/margin_10"/>
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_size"
+        android:hint="Enter Password"
+        android:layout_marginTop="@dimen/margin_10"
+        android:background="@drawable/spinner_background"
+        android:paddingLeft="@dimen/margin_10"
+        android:inputType="textPassword"/>
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textSize="@dimen/text_size"
+        android:textColor="@android:color/black"
+        android:background="@drawable/button_background"
+        android:layout_marginTop="@dimen/margin_10"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/signIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_size"
+        android:textStyle="italic|bold"
+        android:text="SignIn"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/margin_10"
+
+        />
+</LinearLayout>

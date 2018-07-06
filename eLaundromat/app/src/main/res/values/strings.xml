@@ -17,6 +17,7 @@
     <string name="title_activity_laundry_details_acitvity2">LaundryDetailsAcitvity2</string>
     <string name="title_activity_review">ReviewActivity</string>
     <string name="dry_cost_info">8 mins for 25 cents</string>
+    <string name="laundry_name">laundry_name</string>
     <string name="number_of_clothes">number_of_clothes</string>
     <string name="wash_type">wash_type</string>
     <string name="wash_selector">wash_selector</string>
@@ -25,7 +26,25 @@
     <string name="washer_cost">washer_cost</string>
     <string name="dryer_cost">dryer_cost</string>
     <string name="total_cost">total_cost</string>
+    <string name="time_stamp">time_stamp</string>
     <string name="title_activity_login">Login</string>
+    <string name="email_login">email_login</string>
+    <string name="pwd_login">pwd_login</string>
+    <string name="title_activity_sign_in">SignIn</string>
+    <string name="name">name</string>
+    <string name="address">address</string>
+    <string name="city">city</string>
+    <string name="state">state</string>
+    <string name="zipcode">zipcode</string>
+    <string name="mobile">mobile</string>
+    <string name="title_activity_disclaimer">Disclaimer</string>
+    <string name="disclaimer_1">1. We pick-up the laundry within 24hrs after submitting the order.\n We call and then come to pick up the order.</string>
+    <string name="disclaimer_2">2. We delivery the laundry within 24hrs after  pick-up.</string>
+    <string name="disclaimer_3">3. Rates are subjected to change anytime.</string>
+    <string name="disclaimer_4">4. If you want us to use your detergent mention that in special instructions.</string>
+    <string name="disclaimer_5">5. If want us to use any special fragrance cubes / sheets, mention that in special instructions. </string>
+    <string name="disclaimer_6">6. If you are going to pick-up or drop-off your laundry, mention that in special instructions.</string>
+    <string name="title_activity_history">History</string>
 
 
 </resources>

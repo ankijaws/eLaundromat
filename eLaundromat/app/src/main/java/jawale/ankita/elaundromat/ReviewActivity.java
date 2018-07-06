@@ -14,11 +14,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class ReviewActivity extends MainActivity implements View.OnClickListener {
 
     private TextView numberOfClothes, washType, washSelector,
-            dryerOption, specialInstructions, washCost, dryCost, TotalCost;
+            dryerOption, specialInstructions, washCost, dryCost, TotalCost, laundryName;
     private Button confirmBtn;
+    private String intentExtra = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +47,20 @@ public class ReviewActivity extends MainActivity implements View.OnClickListener
             }
         });
 
+        Bundle extras = getIntent().getExtras();
+        intentExtra = extras.getString("class");
+
         init(contentView);
         setValues();
+
+        if (!intentExtra.equalsIgnoreCase("")){
+            confirmBtn.performClick();
+        }
 
     }
 
     private void init(View rootView){
+        laundryName = (TextView) rootView.findViewById(R.id.laundryName);
         numberOfClothes = (TextView) rootView.findViewById(R.id.numOfClothes);
         washType = (TextView) rootView.findViewById(R.id.washType);
         washSelector = (TextView) rootView.findViewById(R.id.washSelector);
@@ -62,6 +75,7 @@ public class ReviewActivity extends MainActivity implements View.OnClickListener
     }
 
     private void setValues(){
+        laundryName.setText(GlobalClass.location);
         numberOfClothes.setText(GlobalClass.numberrOfClothes);
         washType.setText(GlobalClass.washType);
         washSelector.setText(GlobalClass.washSelector);
@@ -97,8 +111,8 @@ public class ReviewActivity extends MainActivity implements View.OnClickListener
     private void calculateDryCost(){
         try {
             int time = Integer.parseInt(GlobalClass.dryerTime.toString().trim());
-            double costInCents = time / 25;
-            double costInDollars = costInCents / 4;
+            double costInCents = (time / 8)*25;
+            double costInDollars = costInCents / 100;
             GlobalClass.dryCost = costInDollars;
         }catch (Exception e){
             e.printStackTrace();
@@ -113,16 +127,23 @@ public class ReviewActivity extends MainActivity implements View.OnClickListener
                 if (GlobalClass.pref == null) {
                     GlobalClass.initSharedPref(this);
                 }
+                GlobalClass.storeBoolean("isLoggedIn",true);
                 saveInSharedPref();
                 Toast.makeText(ReviewActivity.this, "Order Submitted Successfully", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ReviewActivity.this, MainActivity.class);
+                startActivity(intent);
             }else{
+                GlobalClass.storeBoolean("isLoggedIn",false);
                 Intent i = new Intent (ReviewActivity.this, Login.class);
+                i.putExtra("class",ReviewActivity.this.getResources().getString(R.string.title_activity_review));
                 startActivity(i);
             }
         }
     }
 
     private void saveInSharedPref(){
+
+        GlobalClass.storeString(this.getResources().getString(R.string.laundry_name),GlobalClass.location);
         GlobalClass.storeString(this.getResources().getString(R.string.number_of_clothes),GlobalClass.numberrOfClothes);
         GlobalClass.storeString(this.getResources().getString(R.string.wash_type),GlobalClass.washType);
         GlobalClass.storeString(this.getResources().getString(R.string.wash_selector),GlobalClass.washSelector);
@@ -131,5 +152,9 @@ public class ReviewActivity extends MainActivity implements View.OnClickListener
         GlobalClass.storeString(this.getResources().getString(R.string.washer_cost),GlobalClass.washCost+"");
         GlobalClass.storeString(this.getResources().getString(R.string.dryer_cost),GlobalClass.dryCost+"");
         GlobalClass.storeString(this.getResources().getString(R.string.total_cost),GlobalClass.totalCOst+"");
+        SimpleDateFormat s = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z");
+        String format = s.format(new Date());
+        GlobalClass.storeString(this.getResources().getString(R.string.time_stamp),format);
+
     }
 }

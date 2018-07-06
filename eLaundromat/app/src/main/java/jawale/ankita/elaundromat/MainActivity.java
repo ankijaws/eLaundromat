@@ -93,15 +93,15 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_history) {
-            //Intent intent = new Intent(this,HistoryActivity.class);
-            //startActivity(intent);
+            Intent intent = new Intent(this,HistoryActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_disclaimer) {
-            //Intent intent = new Intent(this,DisclaimerActivity.class);
-            //startActivity(intent);
+            Intent intent = new Intent(this,DisclaimerActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_about_us) {
             Intent intent = new Intent(this,AboutUsActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_feedback) {
+        //} else if (id == R.id.nav_feedback) {
             //Intent intent = new Intent(this,FeedbackActivity.class);
             //startActivity(intent);
         } else if (id == R.id.nav_share) {
