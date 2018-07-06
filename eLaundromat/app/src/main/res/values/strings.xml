@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">eLaundromat</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">eLaundromat</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="location_spinner">Select Location</string>
+    <string name="title_activity_laundry_details">LaundryDetailsActivity</string>
+    <string name="title_activity_about_us">AboutUsActivity</string>
+    <string name="title_activity_profile_info">ProfileInfo</string>
+    <string name="about_us">We offer 24x7 Laundry Service. We pick-up the laundry from your address and also drop-off after laundry is completed.
+     Our main motto is customization. We offer all kinds of wash available in the laundromat. All you have to do is select your preference.</string>
+    <string name="about_us_contact_number">+1-917-288-8031</string>
+    <string name="about_us_contact_email">elaundromat@gmail.com</string>
+
+</resources>
