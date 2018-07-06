@@ -15,9 +15,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
-public class LaundryDetailsActivity extends MainActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class LaundryDetailsActivity extends MainActivity implements View.OnClickListener{
+
+    private EditText numberOfClothesET;
+    private RadioGroup washTypeRG, washSelectorRG;
+    private RadioButton whiteWash, colorWash, delicateWash;
+    private RadioButton quickWash, normalWash, heavyWash;
+    private Button continue_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +37,10 @@ public class LaundryDetailsActivity extends MainActivity implements NavigationVi
         LayoutInflater inflater = (LayoutInflater) this
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View contentView = inflater.inflate(R.layout.activity_laundry_details, null, true);
-        //drawer.removeAllViews();
         drawer.removeViewAt(0);
         drawer.addView(contentView, 0);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -42,10 +51,24 @@ public class LaundryDetailsActivity extends MainActivity implements NavigationVi
             }
         });
 
+        init(contentView);
+    }
 
+    private void init(View rootView){
+        numberOfClothesET = (EditText) rootView.findViewById(R.id.numOfClothes);
 
+        washTypeRG = (RadioGroup) rootView.findViewById(R.id.wash_type_radio_group);
+        whiteWash = (RadioButton) rootView.findViewById(R.id.white_wash);
+        colorWash = (RadioButton) rootView.findViewById(R.id.color_wash);
+        delicateWash = (RadioButton) rootView.findViewById(R.id.delicate_wash);
 
+        washSelectorRG = (RadioGroup) rootView.findViewById(R.id.washSelectorRG);
+        quickWash = (RadioButton) rootView.findViewById(R.id.quickWash);
+        normalWash = (RadioButton) rootView.findViewById(R.id.normalWash);
+        heavyWash = (RadioButton) rootView.findViewById(R.id.heavyWash);
 
+        continue_btn = (Button) rootView.findViewById(R.id.btn_continue);
+        continue_btn.setOnClickListener(this);
     }
 
     @Override
@@ -58,37 +81,48 @@ public class LaundryDetailsActivity extends MainActivity implements NavigationVi
         }
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
+    public void onClick(View v) {
+        validate();
+    }
 
-        if (id == R.id.nav_home) {
-            Intent intent = new Intent(this,MainActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_history) {
-            //Intent intent = new Intent(this,HistoryActivity.class);
-            //startActivity(intent);
-        } else if (id == R.id.nav_disclaimer) {
-            //Intent intent = new Intent(this,DisclaimerActivity.class);
-            //startActivity(intent);
-        } else if (id == R.id.nav_about_us) {
-            Intent intent = new Intent(this,AboutUsActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_feedback) {
-            //Intent intent = new Intent(this,FeedbackActivity.class);
-            //startActivity(intent);
-        } else if (id == R.id.nav_share) {
-            Intent intent=new Intent(Intent.ACTION_SEND);
-            intent.setType("text/plain");
-            intent.putExtra(Intent.EXTRA_SUBJECT,"Share eLaundromat");
-            intent.putExtra(Intent.EXTRA_TEXT,"Join eLaundromat & save your time");
-            startActivity(Intent.createChooser(intent,"eLaundromat Service"));
+    private void validate(){
+        if(numberOfClothesET.getText().toString().trim().isEmpty()){
+            Toast.makeText(LaundryDetailsActivity.this,"Enter the number of clothes to proceed",Toast.LENGTH_SHORT).show();
+        }else{
+            GlobalClass.numberrOfClothes = numberOfClothesET.getText().toString().trim();
+            setWashTypeRB(washTypeRG.getCheckedRadioButtonId());
+            setWashSelectorRB(washSelectorRG.getCheckedRadioButtonId());
+            Intent i = new Intent(LaundryDetailsActivity.this,LaundryDetailsAcitvity2.class);
+            startActivity(i);
         }
+    }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
+    private void setWashTypeRB(int radioBtnId){
+        switch (radioBtnId){
+            case R.id.white_wash:
+                GlobalClass.washType = "White Wash";
+                break;
+            case R.id.color_wash:
+                GlobalClass.washType = "Color Wash";
+                break;
+            case R.id.delicate_wash:
+                GlobalClass.washType = "Delicate Wash";
+                break;
+        }
+    }
+
+    private void setWashSelectorRB(int radioBtnId){
+        switch (radioBtnId){
+            case R.id.quickWash:
+                GlobalClass.washSelector = "Quick Wash";
+                break;
+            case R.id.normalWash:
+                GlobalClass.washSelector = "Normal Wash";
+                break;
+            case R.id.heavyWash:
+                GlobalClass.washSelector = "Heavy Wash";
+                break;
+        }
     }
 }

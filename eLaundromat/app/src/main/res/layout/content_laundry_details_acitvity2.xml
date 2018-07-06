@@ -6,6 +6,132 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".LaundryDetailsAcitvity2"
-    tools:showIn="@layout/activity_laundry_details_acitvity2">
+    tools:showIn="@layout/activity_laundry_details_acitvity2"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_20">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Do you want to opt drying option?"
+        android:textSize="@dimen/text_size"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:visibility="gone"
+        />
+
+    <RadioGroup
+        android:id="@+id/dryingRG"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/yesDryer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:text="Yes"
+            android:textSize="@dimen/text_size"
+            android:layout_weight="1"
+            android:checked="true"
+            />
+
+            <RadioButton
+                android:id="@+id/noDryer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:text="No"
+                android:textSize="@dimen/text_size"
+                android:layout_weight="1"
+                />
+
+        </LinearLayout>
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/dryerOptionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/margin_10">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Dryer Option :"
+            android:textSize="@dimen/text_size"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"/>
+
+        <RadioGroup
+            android:id="@+id/dryerTypeRG"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10">
+
+                <RadioButton
+                    android:id="@+id/permanentPress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:text="Permanent Press"
+                    android:textSize="@dimen/text_size"
+                    android:layout_weight="1"
+                    android:checked="true"/>
+
+                <RadioButton
+                    android:id="@+id/whiteDryer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:text="White Clothes Dryer"
+                    android:textSize="@dimen/text_size"
+                    android:layout_weight="1"/>
+
+                <RadioButton
+                    android:id="@+id/delicateDryer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:text="Delicate Dry"
+                    android:textSize="@dimen/text_size"
+                    android:layout_weight="1"/>
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/specialNote"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_size"
+        android:hint="Enter special instructions here"
+        android:layout_marginTop="@dimen/margin_10"
+        android:background="@drawable/spinner_background"
+        android:textColorHint="@color/red1_light"
+        android:padding="@dimen/padding_20"/>
+
+    <Button
+        android:id="@+id/btn_continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continue"
+        android:textSize="@dimen/text_size"
+        android:background="@drawable/button_background"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_10"
+        android:padding="@dimen/margin_10"/>
 
 </LinearLayout>
